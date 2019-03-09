@@ -1,0 +1,34 @@
+spring:
+  # Database settings and address for connection purpose
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: expense
+  # Attributes (time-zone and locale) to properly handle date values
+  jackson:
+    time-zone: Brazil/East
+    locale: pt-BR
+
+server:
+  servlet:
+  # Define base path for api requests
+    context-path: /api
+
+# Enable log for security operations
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        security: DEBUG
+
+# Application internal variables
+app:
+  security:
+    encoder: bcrypt
+  oauth2:
+    resource: expense
+    client: client
+    secret: 123
+    scopes: read, write
+    grants: password, authorization_code, refresh_token

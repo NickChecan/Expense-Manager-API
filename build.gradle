@@ -1,0 +1,48 @@
+plugins {
+    // Apply the java-library plugin to add support for Java Library
+    id 'java-library'
+    // Enable the gradle run task
+    id 'application'
+    // A gradle plugin that simplifies the usage of the Lombok annotation processor.
+    // More information at: https://github.com/franzbecker/gradle-lombok
+    id 'io.franzbecker.gradle-lombok' version '1.14'
+    // Spring boot framework plugin for gradle
+    id 'org.springframework.boot' version '2.1.0.RELEASE'
+    // Provides Maven-like dependency management functionality for Spring
+    id 'io.spring.dependency-management' version '1.0.6.RELEASE'
+}
+
+// Main class for the run task of the application plugin
+mainClassName = 'com.expense.Application'
+
+lombok {
+    version = '1.18.4'
+    sha256 = "39f3922deb679b1852af519eb227157ef2dd0a21eec3542c8ce1b45f2df39742"
+}
+
+// Where to find the dependencies of this project:
+repositories {
+    jcenter()
+}
+
+dependencies {
+
+    // Spring framework basic web features
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Spring Data MongoDB project provides integration with the MongoDB document database
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+
+    // Spring Security to set up authentication and access control
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // Spring Security OAuth2 to manage access-control and provide JWTs
+    implementation 'org.springframework.security.oauth:spring-security-oauth2:2.3.4.RELEASE'
+
+    // JAXB is not available by default on JAVA 9+, so with need to add manually
+    implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.1'
+
+    // JUnit test framework
+    testImplementation 'junit:junit:4.12'
+
+}
