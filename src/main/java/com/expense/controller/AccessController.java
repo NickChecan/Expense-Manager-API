@@ -24,8 +24,9 @@ public class AccessController {
 
     @JsonView({View.Main.class})
     @PostMapping(value = "/signup")
-    public ResponseEntity<User> signUp(@RequestBody User user) {
-        return new ResponseEntity<>(this.userSecurityService.signUp(user), HttpStatus.CREATED);
+    public ResponseEntity signUp(@RequestBody User user) {
+        this.userSecurityService.signUp(user);
+        return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/me")

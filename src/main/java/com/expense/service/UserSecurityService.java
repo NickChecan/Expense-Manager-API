@@ -49,7 +49,7 @@ public class UserSecurityService implements UserDetailsService {
                 .orElseThrow(ResourceNotFoundException::new);
     }
 
-    public User signUp(User user) {
+    public void signUp(User user) {
         user.setId(null); // Clear the id to avoid unnecessary update operations
         user.setPassword(this.passwordEncoder.encode(user.getPassword())); // Encode password for security reasons
         // Get and set a list of common roles for standard users
@@ -57,7 +57,7 @@ public class UserSecurityService implements UserDetailsService {
         commonRoles.add(this.roleRepository.findByNameIgnoreCase("ROLE_USER")
                 .orElseThrow(() -> new ResourceNotFoundException("User common roles not found!")));
         user.setRoles(commonRoles);
-        return this.userRepository.save(user);
+        this.userRepository.save(user);
     }
 
 }
