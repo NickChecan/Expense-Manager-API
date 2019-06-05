@@ -31,6 +31,7 @@ public class GroupController {
     @PostMapping
     @JsonView({View.Main.class})
     public ResponseEntity<Group> create(@RequestBody Group group) {
+        System.out.println("Justice for all");
         return new ResponseEntity<>(this.groupService.create(group), HttpStatus.CREATED);
     }
 
