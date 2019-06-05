@@ -89,5 +89,4 @@ All exceptions will be properly handled at the **RestExceptionHandler.java** cla
 The environment variables class at the settings package, will serve information previously configured at the **application.yml** file, available at the **resources** folder. This approach intends to organize static data and simplify constants usage through the entire application.
 
 
-
 ![Screenshot](assets/class_diagram.png)
